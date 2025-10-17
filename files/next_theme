@@ -48,7 +48,7 @@ done
 THEMES=$(find "${FOLDER_THEMES}" -name "*.toml" -printf "%f\n")
 CURRENT=$(grep "themes" "${ALACRITTY_FILE}"  | awk -F '[/|"]' '{print $6}')
 
-if [[ $MODE == "previous" ]]; then
+if [[ "$MODE" == "previous" ]]; then
   THEMES=$(echo -e "${THEMES}" | sort --reverse)
 else
   THEMES=$(echo -e "${THEMES}" | sort)
@@ -61,7 +61,7 @@ fi
 
 NEW=$(echo -e "${NEW}" | sed 's/.toml//g')
 
-if [[ -n $NEW ]]; then
+if [[ -n "$NEW" ]]; then
   sed -i "s#${HELIX_REG}#theme = \"${NEW}\"#" "${HELIX_FILE}"
   sed -i "s#${ALACRITTY_REG}#themes/${NEW}.toml#" "${ALACRITTY_FILE}"
   sed -i "s#${STARSHIP_REG}#palette = \"${NEW}\"#" "${STARSHIP_FILE}"
@@ -71,7 +71,16 @@ if [[ -n $NEW ]]; then
     kill -USR1 "$PID" 2> /dev/null
   done
 
+  # Up gnome style
+  if [[ "$NEW" =~ "light" || "$NEW" =~ "latte" ]]; then
+    gsettings set org.gnome.desktop.interface color-scheme "'prefer-light'"
+  else
+    gsettings set org.gnome.desktop.interface color-scheme "'prefer-dark'"
+  fi
+
   notify-send "✨ New theme: ${NEW} ✨ "
   echo "New theme: $NEW"
   exit 0
 fi
+
+exit 1
