@@ -15,6 +15,9 @@ HELIX_REG="theme = \".*\""
 STARSHIP_FILE="$HOME/.config/starship.toml"
 STARSHIP_REG="palette = \".*\""
 
+ZELLIJ_FILE="$HOME/.config/zellij/config.kdl"
+ZELLIJ_REG="^theme \".*\""
+
 # ---------------------------------------------------------------------------------------
 usage() {
   echo "Usage: $(basename "${0}") [OPTION]"
@@ -65,6 +68,7 @@ if [[ -n "$NEW" ]]; then
   sed -i "s#${HELIX_REG}#theme = \"${NEW}\"#" "${HELIX_FILE}"
   sed -i "s#${ALACRITTY_REG}#themes/${NEW}.toml#" "${ALACRITTY_FILE}"
   sed -i "s#${STARSHIP_REG}#palette = \"${NEW}\"#" "${STARSHIP_FILE}"
+  sed -i "s#${ZELLIJ_REG}#theme \"${NEW}\"#" "${ZELLIJ_FILE}"
 
   # Due to the appimage, the signal has to be sent to the PID of each running helix
   pgrep -f usr/bin/hx | while read -r PID; do
