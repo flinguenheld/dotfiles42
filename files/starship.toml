@@ -6,24 +6,24 @@ add_newline = false
 
 format = """
 $username\
-[🭐 ](bg:bg_ip bg_user)\
+[▛ ](bg:bg_ip bg_user)\
 $localip\
-[🭐 ](bg:bg_git bg_ip)\
+[▛ ](bg:bg_git bg_ip)\
 $git_branch\
 $git_status\
 $git_metrics\
-[🭐 ](bg:bg_code bg_git)\
+[▛ ](bg:bg_code bg_git)\
 $rust\
 $c\
 $lua\
 $python\
-[🭐 ](bg:bg_dir bg_code)\
+[▛ ](bg:bg_dir bg_code)\
 $directory\
-[🭐 ](bg:bg_status bg_dir)\
+[▛ ](bg:bg_status bg_dir)\
 $cmd_duration\
 $status\
 $jobs\
-[🭬 ](bg:bg_tranparent bg_status)\
+[▛ ](bg:bg_tranparent bg_status)\
 """
 
 [username]
