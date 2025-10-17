@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+# Folder : /home/bin/
+# florent@linguenheld.fr 2025
+
+FOLDER="${HOME}/.config/alacritty/"
+FOLDER_THEMES="${FOLDER}themes/"
+ALACRITTY_FILE="${FOLDER}alacritty.toml"
+
+ALACRITTY_FILE="$HOME/.config/alacritty/alacritty.toml"
+ALACRITTY_REG="themes/.*\.toml"
+
+HELIX_FILE="$HOME/.config/helix/config.toml"
+HELIX_REG="theme = \".*\""
+
+STARSHIP_FILE="$HOME/.config/starship.toml"
+STARSHIP_REG="palette = \".*\""
+
+# ---------------------------------------------------------------------------------------
+usage() {
+  echo "Usage: $(basename "${0}") [OPTION]"
+  echo "  Get the available themes in the folder: '${FOLDER}'"
+  echo "  Then get the current active theme in the file: '${ALACRITTY_FILE}'"
+  echo "  And update the Helix, Alacritty and starship config files with the next theme."
+  echo
+  echo "     -p PREVIOUS:    to set the previous theme."
+  echo "     -h HELP:        display this message."
+}
+
+MODE="next"
+while getopts phm OPTION; do
+
+  case ${OPTION} in
+    p)
+      MODE="previous"
+    ;;
+    h)
+      usage
+      exit 0
+    ;;
+    ?)
+      usage
+      exit 1
+    ;;
+  esac
+done
+
+# ---------------------------------------------------------------------------------------
+THEMES=$(find "${FOLDER_THEMES}" -name "*.toml" -printf "%f\n")
+CURRENT=$(grep "themes" "${ALACRITTY_FILE}"  | awk -F '[/|"]' '{print $6}')
+
+if [[ $MODE == "previous" ]]; then
+  THEMES=$(echo -e "${THEMES}" | sort --reverse)
+else
+  THEMES=$(echo -e "${THEMES}" | sort)
+fi
+
+NEW=$(echo -e "${THEMES}" | paste -s | awk -F "${CURRENT}" '{print $2}' | awk '{print $1}')
+if [[ -z $NEW ]]; then
+  NEW=$(echo -e "${THEMES}" | head -1)
+fi
+
+NEW=$(echo -e "${NEW}" | sed 's/.toml//g')
+
+if [[ -n $NEW ]]; then
+  sed -i "s#${HELIX_REG}#theme = \"${NEW}\"#" "${HELIX_FILE}"
+  sed -i "s#${ALACRITTY_REG}#themes/${NEW}.toml#" "${ALACRITTY_FILE}"
+  sed -i "s#${STARSHIP_REG}#palette = \"${NEW}\"#" "${STARSHIP_FILE}"
+
+  # Due to the appimage, the signal has to be sent to the PID of each running helix
+  pgrep -f usr/bin/hx | while read -r PID; do
+    kill -USR1 "$PID" 2> /dev/null
+  done
+
+  notify-send "✨ New theme: ${NEW} ✨ "
+  echo "New theme: $NEW"
+  exit 0
+fi

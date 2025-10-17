@@ -1,7 +1,7 @@
 # starship.toml
 # Folder : /home/.config/
 
-palette = "catppuccin_macchiato"
+palette = "catppuccin_frappe"
 add_newline = false
 
 format = """
@@ -285,7 +285,7 @@ fg_python = "#fab387"
 fg_duration = "#fab387"
 fg_status = "#f38ba8"
 
-[palettes.papercolor_dark]
+[palettes.papercolor-dark]
 bg_user = "#afd700"
 bg_ip = "#5faf5f"
 bg_dir = "#5fafd7"
@@ -305,7 +305,7 @@ fg_python = "#ffaf00"
 fg_duration = "#ffaf00"
 fg_status = "#ff5faf"
 
-[palettes.papercolor_light]
+[palettes.papercolor-light]
 bg_user = "#d70000"
 bg_ip = "#af0000"
 bg_dir = "#0087af"
