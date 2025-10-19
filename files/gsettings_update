@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
+# Folder : /home/bin/
+# florent@linguenheld.fr 2025
 
 # To get current keybindings:
 # gsettings list-recursively
 
 gsettings list-schemas | xargs -n 1 gsettings reset-recursively
+
+gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+altgr-intl')]"
 
 # #######################################################################################
 # ############################################################################ CUSTOM ###
@@ -21,7 +25,7 @@ $CUST/custom0/ binding "<Super>Return"
 
 $CUST/custom1/ name "Next theme"
 $CUST/custom1/ command "next_theme"
-$CUST/custom1/ binding "<Super>t"
+$CUST/custom1/ binding "<Super><Control>t"
 
 $CUST/custom2/ name "Firefox"
 $CUST/custom2/ command "firefox"
@@ -378,6 +382,7 @@ $GSET_MUTTER edge-tiling true
 $GSET_MUTTER experimental-features "[]"
 $GSET_MUTTER focus-change-on-pointer-rest true
 $GSET_MUTTER locate-pointer-key 'Control_L'
+# $GSET_MUTTER overlay-key 'Super'
 $GSET_MUTTER overlay-key 'Super'
 $GSET_MUTTER workspaces-only-on-primary true
 ${GSET_MUTTER}.keybindings cancel-input-capture "['<Super><Shift>Escape']"
