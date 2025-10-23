@@ -22,8 +22,8 @@ keybinds clear-defaults=true {
         bind "down" { MoveFocus "down"; }
         bind "up" { MoveFocus "up"; }
         bind "right" { MoveFocus "right"; }
-        bind "c" { SwitchToMode "renamepane"; PaneNameInput 0; }
-        bind "d" { NewPane "down"; SwitchToMode "normal"; }
+        bind "r" { SwitchToMode "renamepane"; PaneNameInput 0; }
+        // bind "d" { NewPane "down"; SwitchToMode "normal"; }
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "normal"; }
         bind "f" { ToggleFocusFullscreen; SwitchToMode "normal"; }
         // bind "h" { MoveFocus "left"; }
@@ -32,9 +32,10 @@ keybinds clear-defaults=true {
         // bind "k" { MoveFocus "up"; }
         // bind "l" { MoveFocus "right"; }
         // bind "n" { NewPane; SwitchToMode "normal"; }
-        bind "p" { SwitchFocus; }
-        bind "Super p" { SwitchToMode "normal"; }
-        bind "r" { NewPane "right"; SwitchToMode "normal"; }
+        // bind "p" { SwitchFocus; }
+        // bind "Super p" { SwitchToMode "normal"; }
+        bind "p" { NewPane "right"; SwitchToMode "normal"; }
+        bind "P" { NewPane "down"; SwitchToMode "normal"; }
         bind "s" { NewPane "stacked"; SwitchToMode "normal"; }
         bind "w" { ToggleFloatingPanes; SwitchToMode "normal"; }
         bind "z" { TogglePaneFrames; SwitchToMode "normal"; }
@@ -72,9 +73,9 @@ keybinds clear-defaults=true {
         bind "down" { Resize "Increase down"; }
         bind "up" { Resize "Increase up"; }
         bind "right" { Resize "Increase right"; }
-        bind "+" { Resize "Increase"; }
-        bind "-" { Resize "Decrease"; }
-        bind "=" { Resize "Increase"; }
+        // bind "+" { Resize "Increase"; }
+        // bind "-" { Resize "Decrease"; }
+        // bind "=" { Resize "Increase"; }
         // bind "H" { Resize "Decrease left"; }
         // bind "J" { Resize "Decrease down"; }
         // bind "K" { Resize "Decrease up"; }
@@ -166,7 +167,10 @@ keybinds clear-defaults=true {
         // bind "Alt =" { Resize "Increase"; }
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
+
         bind "Super f" { ToggleFloatingPanes; }
+        // bind "Super f" { ToggleFocusFullscreen; }
+
         bind "Super g" { SwitchToMode "locked"; }
 
         bind "Alt p" { TogglePaneInGroup; }
@@ -189,10 +193,10 @@ keybinds clear-defaults=true {
         bind "Super t" { SwitchToMode "tab"; }
     }
     shared_except "locked" "pane" {
-        bind "Super p" { SwitchToMode "pane"; }
+        // bind "Super p" { SwitchToMode "pane"; }
     }
     shared_except "locked" "resize" {
-        bind "Super n" { SwitchToMode "resize"; }
+        // bind "Super r" { SwitchToMode "resize"; }
     }
     shared_except "normal" "locked" "entersearch" {
         bind "enter" { SwitchToMode "normal"; }
@@ -206,18 +210,18 @@ keybinds clear-defaults=true {
     shared_among "scroll" "search" {
         bind "PageDown" { PageScrollDown; }
         bind "PageUp" { PageScrollUp; }
-        bind "left" { PageScrollUp; }
+        // bind "left" { PageScrollUp; }
         bind "down" { ScrollDown; }
         bind "up" { ScrollUp; }
-        bind "right" { PageScrollDown; }
-        bind "Super b" { PageScrollUp; }
-        bind "Super c" { ScrollToBottom; SwitchToMode "normal"; }
+        // bind "right" { PageScrollDown; }
+        // bind "Super b" { PageScrollUp; }
+        // bind "Super c" { ScrollToBottom; SwitchToMode "normal"; }
         bind "d" { HalfPageScrollDown; }
-        bind "Super f" { PageScrollDown; }
-        bind "h" { PageScrollUp; }
-        bind "j" { ScrollDown; }
-        bind "k" { ScrollUp; }
-        bind "l" { PageScrollDown; }
+        // bind "Super f" { PageScrollDown; }
+        // bind "h" { PageScrollUp; }
+        // bind "j" { ScrollDown; }
+        // bind "k" { ScrollUp; }
+        // bind "l" { PageScrollDown; }
         bind "Super s" { SwitchToMode "normal"; }
         bind "u" { HalfPageScrollUp; }
     }
@@ -230,7 +234,7 @@ keybinds clear-defaults=true {
         bind "esc" { UndoRenameTab; SwitchToMode "tab"; }
     }
     shared_among "renametab" "renamepane" {
-        bind "Super c" { SwitchToMode "normal"; }
+        bind "Super r" { SwitchToMode "normal"; }
     }
     renamepane {
         bind "esc" { UndoRenamePane; SwitchToMode "pane"; }
@@ -300,7 +304,7 @@ web_client {
 // Default: default
 // 
 // theme "dracula"
-theme "catppuccin_frappe"
+theme "gruvbox"
  
 // Choose the base input mode of zellij.
 // Default: normal

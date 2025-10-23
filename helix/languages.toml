@@ -10,6 +10,9 @@ language-servers = ["rust-analyzer", "harper-ls"]
 formatter = { command = "rustfmt" }
 auto-format = true
 
+[language-server.rust-analyzer.config.cargo]
+features = "all"
+
 [language-server.rust-analyzer.config]
 checkOnSave = { command = "clippy" }
 # inlayHints.typeHints = false
