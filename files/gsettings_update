@@ -26,7 +26,7 @@ $CUST/custom0/ command "ft_lock"
 $CUST/custom0/ binding "<Super><Control><Alt>P"
 
 $CUST/custom1/ name "Alacritty"
-$CUST/custom1/ command "alacritty"
+$CUST/custom1/ command "~/bin/alacritty"
 $CUST/custom1/ binding "<Super>Return"
 
 $CUST/custom2/ name "Next theme"
@@ -136,7 +136,7 @@ $GSET_WM unmaximize "[]"
 
 # #######################################################################################
 # ########################################################################### TILLING ###
-GSET_TILLING="gsettings set org.gnome.shell.extensions.tiling-assistant"
+# GSET_TILLING="gsettings set org.gnome.shell.extensions.tiling-assistant"
 
 $GSET_TILLING activate-layout0 "[]"
 $GSET_TILLING activate-layout1 "[]"
@@ -231,15 +231,15 @@ $GSET_TILLING window-gap 5
 GSET_SHELL_KB="gsettings set org.gnome.shell.keybindings"
 
 $GSET_SHELL_KB focus-active-notification "[]"
-$GSET_SHELL_KB open-new-window-application-1 "[]"
-$GSET_SHELL_KB open-new-window-application-2 "[]"
-$GSET_SHELL_KB open-new-window-application-3 "[]"
-$GSET_SHELL_KB open-new-window-application-4 "[]"
-$GSET_SHELL_KB open-new-window-application-5 "[]"
-$GSET_SHELL_KB open-new-window-application-6 "[]"
-$GSET_SHELL_KB open-new-window-application-7 "[]"
-$GSET_SHELL_KB open-new-window-application-8 "[]"
-$GSET_SHELL_KB open-new-window-application-9 "[]"
+# $GSET_SHELL_KB open-new-window-application-1 "[]"
+# $GSET_SHELL_KB open-new-window-application-2 "[]"
+# $GSET_SHELL_KB open-new-window-application-3 "[]"
+# $GSET_SHELL_KB open-new-window-application-4 "[]"
+# $GSET_SHELL_KB open-new-window-application-5 "[]"
+# $GSET_SHELL_KB open-new-window-application-6 "[]"
+# $GSET_SHELL_KB open-new-window-application-7 "[]"
+# $GSET_SHELL_KB open-new-window-application-8 "[]"
+# $GSET_SHELL_KB open-new-window-application-9 "[]"
 $GSET_SHELL_KB screenshot "[]"
 $GSET_SHELL_KB screenshot-window "[]"
 $GSET_SHELL_KB shift-overview-down "[]"

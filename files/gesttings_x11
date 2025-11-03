@@ -1,0 +1,415 @@
+#!/usr/bin/env bash
+# Folder : /home/bin/
+# florent@linguenheld.fr 2025
+
+# To get current keybindings:
+# gsettings list-recursively
+
+gsettings list-schemas | xargs -n 1 gsettings reset-recursively
+
+# #######################################################################################
+# ############################################################################ LAYOUT ###
+gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+altgr-intl')]"
+
+# #######################################################################################
+# ############################################################################ CUSTOM ###
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[]"
+
+CUST="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+KEY_PATH="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
+"['$KEY_PATH/custom0/', '$KEY_PATH/custom1/', '$KEY_PATH/custom2/', '$KEY_PATH/custom3/', '$KEY_PATH/custom4/', '$KEY_PATH/custom5/']"
+
+$CUST/custom0/ name "Lock"
+$CUST/custom0/ command "ft_lock"
+$CUST/custom0/ binding "<Super><Control><Alt>P"
+
+$CUST/custom1/ name "Alacritty"
+$CUST/custom1/ command "~/bin/alacritty"
+$CUST/custom1/ binding "<Super>Return"
+
+$CUST/custom2/ name "Next theme"
+$CUST/custom2/ command "/home/flinguen/bin/next_theme"
+$CUST/custom2/ binding "<Super><Control>t"
+
+$CUST/custom3/ name "Firefox"
+$CUST/custom3/ command "/home/flinguen/bin/firefox"
+$CUST/custom3/ binding "<Super>b"
+
+$CUST/custom4/ name "Firefox private"
+$CUST/custom4/ command "/home/flinguen/bin/firefox --private-window"
+$CUST/custom4/ binding "<Super><Control>b"
+
+$CUST/custom5/ name "Firefox wordref"
+$CUST/custom5/ command "/home/flinguen/bin/firefox -new-window 'https://www.wordreference.com/enfr/hello'"
+$CUST/custom5/ binding "<Super><Control>w"
+
+
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys area-screenshot "[]"
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys area-screenshot-clip "[]"
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys calculator 'XF86Calculator'
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys control-center 'XF86Tools'
+# gsettings set com.canonical.unity.settings-daemon.plugins.media-keys custom-keybindings "[]"
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys decrease-text-size ''
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys eject 'XF86Eject'
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys email 'XF86Mail'
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys help "[]"
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys home 'XF86Explorer'
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys increase-text-size ''
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys logout "[]"
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys magnifier "[]"
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys magnifier-zoom-in "[]"
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys magnifier-zoom-out "[]"
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys media 'XF86AudioMedia'
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys mic-mute 'XF86AudioMicMute'
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys next 'XF86AudioNext'
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys on-screen-keyboard ''
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys pause 'XF86AudioPause'
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys play 'XF86AudioPlay'
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys previous 'XF86AudioPrev'
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys priority 0
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys screencast "[]"
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys screenreader "[]"
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys screensaver "[]"
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys screenshot "[]"
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys screenshot-clip "[]"
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys search 'XF86Search'
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys stop 'XF86AudioStop'
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys terminal "[]"
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys toggle-contrast ''
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys video-out "[]"
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys volume-down 'XF86AudioLowerVolume'
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys volume-mute 'XF86AudioMute'
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys volume-up 'XF86AudioRaiseVolume'
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys window-screenshot "[]"
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys window-screenshot-clip "[]"
+gsettings set com.canonical.unity.settings-daemon.plugins.media-keys www 'XF86WWW'
+
+gsettings set org.freedesktop.ibus.general use-system-keyboard-layout false
+gsettings set org.freedesktop.ibus.general.hotkey disable-unconditional "[]"
+gsettings set org.freedesktop.ibus.general.hotkey enable-unconditional "[]"
+gsettings set org.freedesktop.ibus.general.hotkey next-engine "[]"
+gsettings set org.freedesktop.ibus.general.hotkey next-engine-in-menu "[]"
+gsettings set org.freedesktop.ibus.general.hotkey prev-engine "[]"
+gsettings set org.freedesktop.ibus.general.hotkey previous-engine "[]"
+gsettings set org.freedesktop.ibus.general.hotkey trigger "[]"
+gsettings set org.freedesktop.ibus.general.hotkey triggers "[]"
+gsettings set org.freedesktop.ibus.panel.emoji hotkey "[]"
+gsettings set org.freedesktop.ibus.panel.emoji unicode-hotkey "[]"
+
+# #######################################################################################
+# ################################################################################ WM ###
+GSET_WM="gsettings set org.gnome.desktop.wm.keybindings"
+
+# gsettings set org.gnome.caribou keyboard-key 'space'
+# gsettings set org.gnome.caribou switch-device 'keyboard'
+# gsettings set org.gnome.crypto.pgp default-key ''
+# gsettings set org.gnome.crypto.pgp keyservers "['ldap://keyserver.pgp.com', 'hkps://keys.openpgp.org']"
+# gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled false
+# gsettings set org.gnome.desktop.a11y.keyboard bouncekeys-beep-reject false
+# gsettings set org.gnome.desktop.a11y.keyboard bouncekeys-delay 300
+# gsettings set org.gnome.desktop.a11y.keyboard bouncekeys-enable false
+# gsettings set org.gnome.desktop.a11y.keyboard disable-timeout 200
+# gsettings set org.gnome.desktop.a11y.keyboard enable false
+# gsettings set org.gnome.desktop.a11y.keyboard feature-state-change-beep false
+# gsettings set org.gnome.desktop.a11y.keyboard mousekeys-accel-time 300
+# gsettings set org.gnome.desktop.a11y.keyboard mousekeys-enable false
+# gsettings set org.gnome.desktop.a11y.keyboard mousekeys-init-delay 300
+# gsettings set org.gnome.desktop.a11y.keyboard mousekeys-max-speed 10
+# gsettings set org.gnome.desktop.a11y.keyboard slowkeys-beep-accept false
+# gsettings set org.gnome.desktop.a11y.keyboard slowkeys-beep-press false
+# gsettings set org.gnome.desktop.a11y.keyboard slowkeys-beep-reject false
+# gsettings set org.gnome.desktop.a11y.keyboard slowkeys-delay 300
+# gsettings set org.gnome.desktop.a11y.keyboard slowkeys-enable false
+# gsettings set org.gnome.desktop.a11y.keyboard stickykeys-enable false
+# gsettings set org.gnome.desktop.a11y.keyboard stickykeys-modifier-beep false
+# gsettings set org.gnome.desktop.a11y.keyboard stickykeys-two-key-off false
+# gsettings set org.gnome.desktop.a11y.keyboard timeout-enable false
+# gsettings set org.gnome.desktop.a11y.keyboard togglekeys-enable false
+# gsettings set org.gnome.desktop.interface gtk-key-theme 'Default'
+# gsettings set org.gnome.desktop.peripherals.keyboard delay 500
+# gsettings set org.gnome.desktop.peripherals.keyboard numlock-state false
+# gsettings set org.gnome.desktop.peripherals.keyboard remember-numlock-state true
+# gsettings set org.gnome.desktop.peripherals.keyboard repeat true
+# gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
+# gsettings set org.gnome.desktop.remote-desktop.rdp tls-key ''
+# gsettings set org.gnome.desktop.screensaver embedded-keyboard-command ''
+# gsettings set org.gnome.desktop.screensaver embedded-keyboard-enabled false
+
+$GSET_WM activate-window-menu "[]"
+$GSET_WM always-on-top "[]"
+$GSET_WM begin-move "[]"
+$GSET_WM begin-resize "[]"
+$GSET_WM close "['<Super><Control>q']"
+$GSET_WM cycle-group "[]"
+$GSET_WM cycle-group-backward "[]"
+$GSET_WM cycle-panels "[]"
+$GSET_WM cycle-panels-backward "[]"
+$GSET_WM cycle-windows "['<Super>Escape']"
+$GSET_WM cycle-windows-backward "[]"
+$GSET_WM lower "[]"
+$GSET_WM maximize "['<Super><Shift>m']"
+$GSET_WM maximize-horizontally "[]"
+$GSET_WM maximize-vertically "[]"
+$GSET_WM minimize "[]"
+$GSET_WM move-to-center "[]"
+$GSET_WM move-to-corner-ne "[]"
+$GSET_WM move-to-corner-nw "[]"
+$GSET_WM move-to-corner-se "[]"
+$GSET_WM move-to-corner-sw "[]"
+$GSET_WM move-to-monitor-down "[]"
+$GSET_WM move-to-monitor-left "[]"
+$GSET_WM move-to-monitor-right "[]"
+$GSET_WM move-to-monitor-up "[]"
+$GSET_WM move-to-side-e "['<Super><Alt><Shift>Right']"
+$GSET_WM move-to-side-n "['<Super><Alt><Shift>Up']"
+$GSET_WM move-to-side-s "['<Super><Alt><Shift>Down']"
+$GSET_WM move-to-side-w "['<Super><Alt><Shift>Left']"
+$GSET_WM move-to-workspace-1 "['<Super><Control>1', '<Super><Control>Home']"
+$GSET_WM move-to-workspace-10 "[]"
+$GSET_WM move-to-workspace-11 "[]"
+$GSET_WM move-to-workspace-12 "[]"
+$GSET_WM move-to-workspace-2 "['<Super><Control>2']"
+$GSET_WM move-to-workspace-3 "['<Super><Control>3']"
+$GSET_WM move-to-workspace-4 "['<Super><Control>4']"
+$GSET_WM move-to-workspace-5 "['<Super><Control>5']"
+$GSET_WM move-to-workspace-6 "['<Super><Control>6']"
+$GSET_WM move-to-workspace-7 "['<Super><Control>7']"
+$GSET_WM move-to-workspace-8 "['<Super><Control>8']"
+$GSET_WM move-to-workspace-9 "['<Super><Control>9']"
+$GSET_WM move-to-workspace-down "[]"
+$GSET_WM move-to-workspace-last "['<Super><Control>End']"
+$GSET_WM move-to-workspace-left "['<Super><Control>Page_Up']"
+$GSET_WM move-to-workspace-right "['<Super><Control>Page_Down']"
+$GSET_WM move-to-workspace-up "[]"
+$GSET_WM panel-main-menu "[]"
+$GSET_WM panel-run-dialog "[]"
+$GSET_WM raise "[]"
+$GSET_WM raise-or-lower "[]"
+$GSET_WM set-spew-mark "[]"
+$GSET_WM show-desktop "[]"
+$GSET_WM switch-applications "['<Super>Tab']"
+$GSET_WM switch-applications-backward "['<Shift><Super>Tab']"
+$GSET_WM switch-group "[]"
+$GSET_WM switch-group-backward "[]"
+$GSET_WM switch-input-source "['XF86Keyboard']"
+$GSET_WM switch-input-source-backward "['<Shift>XF86Keyboard']"
+$GSET_WM switch-panels "[]"
+$GSET_WM switch-panels-backward "[]"
+$GSET_WM switch-to-workspace-1 "['<Super>1', '<Super>Home']"
+$GSET_WM switch-to-workspace-10 "[]"
+$GSET_WM switch-to-workspace-11 "[]"
+$GSET_WM switch-to-workspace-12 "[]"
+$GSET_WM switch-to-workspace-2 "['<Super>2']"
+$GSET_WM switch-to-workspace-3 "['<Super>3']"
+$GSET_WM switch-to-workspace-4 "['<Super>4']"
+$GSET_WM switch-to-workspace-5 "['<Super>5']"
+$GSET_WM switch-to-workspace-6 "['<Super>6']"
+$GSET_WM switch-to-workspace-7 "['<Super>7']"
+$GSET_WM switch-to-workspace-8 "['<Super>8']"
+$GSET_WM switch-to-workspace-9 "['<Super>9']"
+$GSET_WM switch-to-workspace-down "[]"
+$GSET_WM switch-to-workspace-last "['<Super>End']"
+$GSET_WM switch-to-workspace-left "['<Super>Page_Up']"
+$GSET_WM switch-to-workspace-right "['<Super>Page_Down']"
+$GSET_WM switch-to-workspace-up "['<Super>y']"
+$GSET_WM switch-windows "[]"
+$GSET_WM switch-windows-backward "[]"
+$GSET_WM toggle-above "[]"
+$GSET_WM toggle-fullscreen "[]"
+$GSET_WM toggle-maximized "[]"
+$GSET_WM toggle-on-all-workspaces "[]"
+$GSET_WM unmaximize "[]"
+
+gsettings set org.gnome.libgnomekbd.keyboard layouts "[]"
+gsettings set org.gnome.libgnomekbd.keyboard model ''
+gsettings set org.gnome.libgnomekbd.keyboard options "[]"
+gsettings set org.gnome.mutter locate-pointer-key 'Control_L'
+gsettings set org.gnome.mutter overlay-key ''
+gsettings set org.gnome.mutter.keybindings rotate-monitor "['XF86RotateWindows']"
+gsettings set org.gnome.mutter.keybindings switch-monitor "['XF86Display']"
+gsettings set org.gnome.mutter.keybindings tab-popup-cancel "[]"
+gsettings set org.gnome.mutter.keybindings tab-popup-select "[]"
+gsettings set org.gnome.mutter.keybindings toggle-tiled-left "['<Super><Shift>Left']"
+gsettings set org.gnome.mutter.keybindings toggle-tiled-right "['<Super><Shift>Right']"
+gsettings set org.gnome.mutter.wayland.keybindings restore-shortcuts "[]"
+gsettings set org.gnome.mutter.wayland.keybindings switch-to-session-1 "[]"
+gsettings set org.gnome.mutter.wayland.keybindings switch-to-session-10 "[]"
+gsettings set org.gnome.mutter.wayland.keybindings switch-to-session-11 "[]"
+gsettings set org.gnome.mutter.wayland.keybindings switch-to-session-12 "[]"
+gsettings set org.gnome.mutter.wayland.keybindings switch-to-session-2 "[]"
+gsettings set org.gnome.mutter.wayland.keybindings switch-to-session-3 "[]"
+gsettings set org.gnome.mutter.wayland.keybindings switch-to-session-4 "[]"
+gsettings set org.gnome.mutter.wayland.keybindings switch-to-session-5 "[]"
+gsettings set org.gnome.mutter.wayland.keybindings switch-to-session-6 "[]"
+gsettings set org.gnome.mutter.wayland.keybindings switch-to-session-7 "[]"
+gsettings set org.gnome.mutter.wayland.keybindings switch-to-session-8 "[]"
+gsettings set org.gnome.mutter.wayland.keybindings switch-to-session-9 "[]"
+
+gsettings set org.gnome.seahorse.manager keyrings-selected "['secret-service://login']"
+
+# gsettings set org.gnome.settings-daemon.peripherals.keyboard bell-custom-file ''
+# gsettings set org.gnome.settings-daemon.peripherals.keyboard bell-duration 100
+# gsettings set org.gnome.settings-daemon.peripherals.keyboard bell-mode 'on'
+# gsettings set org.gnome.settings-daemon.peripherals.keyboard bell-pitch 400
+# gsettings set org.gnome.settings-daemon.peripherals.keyboard click true
+# gsettings set org.gnome.settings-daemon.peripherals.keyboard click-volume 0
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys battery-status "[]"
+gsettings set org.gnome.settings-daemon.plugins.media-keys battery-status-static "['XF86Battery']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys calculator "[]"
+gsettings set org.gnome.settings-daemon.plugins.media-keys calculator-static "['XF86Calculator']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys control-center "[]"
+gsettings set org.gnome.settings-daemon.plugins.media-keys control-center-static "['XF86Tools']"
+# gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[]"
+gsettings set org.gnome.settings-daemon.plugins.media-keys decrease-text-size "[]"
+gsettings set org.gnome.settings-daemon.plugins.media-keys eject "[]"
+gsettings set org.gnome.settings-daemon.plugins.media-keys eject-static "['XF86Eject']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys email "[]"
+gsettings set org.gnome.settings-daemon.plugins.media-keys email-static "['XF86Mail']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys help "[]"
+gsettings set org.gnome.settings-daemon.plugins.media-keys hibernate "[]"
+gsettings set org.gnome.settings-daemon.plugins.media-keys hibernate-static "['XF86Suspend', 'XF86Hibernate']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys home "[]"
+gsettings set org.gnome.settings-daemon.plugins.media-keys home-static "['XF86Explorer']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys increase-text-size "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys keyboard-brightness-down "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys keyboard-brightness-down-static "['XF86KbdBrightnessDown']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys keyboard-brightness-toggle "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys keyboard-brightness-toggle-static "['XF86KbdLightOnOff']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys keyboard-brightness-up "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys keyboard-brightness-up-static "['XF86KbdBrightnessUp']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys logout "['<Control><Alt>Delete']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys magnifier "[]"
+gsettings set org.gnome.settings-daemon.plugins.media-keys magnifier-zoom-in "[]"
+gsettings set org.gnome.settings-daemon.plugins.media-keys magnifier-zoom-out "[]"
+gsettings set org.gnome.settings-daemon.plugins.media-keys media "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys media-static "['XF86AudioMedia']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys mic-mute "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys mic-mute-static "['XF86AudioMicMute']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys next "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys next-static "['XF86AudioNext', '<Ctrl>XF86AudioNext']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys on-screen-keyboard "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys pause "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys pause-static "['XF86AudioPause']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys play "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys play-static "['XF86AudioPlay', '<Ctrl>XF86AudioPlay']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys playback-forward "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys playback-forward-static "['XF86AudioForward']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys playback-random "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys playback-random-static "['XF86AudioRandomPlay']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys playback-repeat "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys playback-repeat-static "['XF86AudioRepeat']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys playback-rewind "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys playback-rewind-static "['XF86AudioRewind']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys power "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys power-static "['XF86PowerOff']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys previous "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys previous-static "['XF86AudioPrev', '<Ctrl>XF86AudioPrev']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys rfkill "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys rfkill-bluetooth "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys rfkill-bluetooth-static "['XF86Bluetooth']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys rfkill-static "['XF86WLAN', 'XF86UWB', 'XF86RFKill']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys rotate-video-lock "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys rotate-video-lock-static "['XF86RotationLockToggle']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-cycle "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-cycle-static "['XF86MonBrightnessCycle']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-down "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-down-static "['XF86MonBrightnessDown']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-up "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-up-static "['XF86MonBrightnessUp']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys screenreader "[]"
+gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "[]"
+gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver-static "['XF86ScreenSaver']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys search "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys search-static "['XF86Search']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys stop "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys stop-static "['XF86AudioStop']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys suspend "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys suspend-static "['XF86Sleep']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "['<Primary><Alt>t']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys toggle-contrast "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys touchpad-off "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys touchpad-off-static "['XF86TouchpadOff']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys touchpad-on "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys touchpad-on-static "['XF86TouchpadOn']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys touchpad-toggle "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys touchpad-toggle-static "['XF86TouchpadToggle', '<Ctrl><Super>XF86TouchpadToggle']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-down "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-down-precise "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-down-precise-static "['<Shift>XF86AudioLowerVolume', '<Ctrl><Shift>XF86AudioLowerVolume']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-down-quiet "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-down-quiet-static "['<Alt>XF86AudioLowerVolume', '<Alt><Ctrl>XF86AudioLowerVolume']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-down-static "['XF86AudioLowerVolume', '<Ctrl>XF86AudioLowerVolume']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-mute "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-mute-quiet "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-mute-quiet-static "['<Alt>XF86AudioMute']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-mute-static "['XF86AudioMute']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-step 6
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-up "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-up-precise "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-up-precise-static "['<Shift>XF86AudioRaiseVolume', '<Ctrl><Shift>XF86AudioRaiseVolume']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-up-quiet "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-up-quiet-static "['<Alt>XF86AudioRaiseVolume', '<Alt><Ctrl>XF86AudioRaiseVolume']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-up-static "['XF86AudioRaiseVolume', '<Ctrl>XF86AudioRaiseVolume']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys www "['']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys www-static "['XF86WWW']"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-ctrl-hotkey-1 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-ctrl-hotkey-10 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-ctrl-hotkey-2 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-ctrl-hotkey-3 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-ctrl-hotkey-4 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-ctrl-hotkey-5 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-ctrl-hotkey-6 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-ctrl-hotkey-7 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-ctrl-hotkey-8 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-ctrl-hotkey-9 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-hotkey-1 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-hotkey-10 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-hotkey-2 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-hotkey-3 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-hotkey-4 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-hotkey-5 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-hotkey-6 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-hotkey-7 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-hotkey-8 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-hotkey-9 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-shift-hotkey-1 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-shift-hotkey-10 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-shift-hotkey-2 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-shift-hotkey-3 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-shift-hotkey-4 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-shift-hotkey-5 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-shift-hotkey-6 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-shift-hotkey-7 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-shift-hotkey-8 "[]"
+gsettings set org.gnome.shell.extensions.dash-to-dock app-shift-hotkey-9 "[]"
+# gsettings set org.gnome.shell.extensions.dash-to-dock hot-keys true
+# gsettings set org.gnome.shell.extensions.dash-to-dock hotkeys-overlay true
+# gsettings set org.gnome.shell.extensions.dash-to-dock hotkeys-show-dock true
+gsettings set org.gnome.shell.keybindings focus-active-notification "[]"
+gsettings set org.gnome.shell.keybindings open-application-menu "[]"
+gsettings set org.gnome.shell.keybindings screenshot "[]"
+gsettings set org.gnome.shell.keybindings screenshot-window "[]"
+gsettings set org.gnome.shell.keybindings shift-overview-down "[]"
+gsettings set org.gnome.shell.keybindings shift-overview-up "[]"
+gsettings set org.gnome.shell.keybindings show-screen-recording-ui "[]"
+gsettings set org.gnome.shell.keybindings show-screenshot-ui "['Print']"
+gsettings set org.gnome.shell.keybindings show-screenshot-ui "['<Super><Control>s']"
+gsettings set org.gnome.shell.keybindings switch-to-application-1 "[]"
+gsettings set org.gnome.shell.keybindings switch-to-application-2 "[]"
+gsettings set org.gnome.shell.keybindings switch-to-application-3 "[]"
+gsettings set org.gnome.shell.keybindings switch-to-application-4 "[]"
+gsettings set org.gnome.shell.keybindings switch-to-application-5 "[]"
+gsettings set org.gnome.shell.keybindings switch-to-application-6 "[]"
+gsettings set org.gnome.shell.keybindings switch-to-application-7 "[]"
+gsettings set org.gnome.shell.keybindings switch-to-application-8 "[]"
+gsettings set org.gnome.shell.keybindings switch-to-application-9 "[]"
+gsettings set org.gnome.shell.keybindings toggle-application-view "[]"
+gsettings set org.gnome.shell.keybindings toggle-message-tray "[]"
+gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>d']"
+# gsettings set org.gnome.totem disable-keyboard-shortcuts false
+# gsettings set org.gtk.Settings.Debug enable-inspector-keybinding false
+# gsettings set org.gtk.gtk4.Settings.Debug enable-inspector-keybinding true
+# gsettings set org.virt-manager.virt-manager.console grab-keys ''
