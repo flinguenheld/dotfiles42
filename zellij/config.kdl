@@ -304,7 +304,7 @@ web_client {
 // Default: default
 // 
 // theme "dracula"
-theme "gruvbox"
+theme "catppuccin_frappe"
  
 // Choose the base input mode of zellij.
 // Default: normal

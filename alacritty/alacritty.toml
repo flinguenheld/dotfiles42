@@ -2,8 +2,9 @@
 import = [
   # "~/.config/hypr/alacritty/colors.toml",
   "~/.config/alacritty/fonts.toml",
-  "~/.config/alacritty/themes/gruvbox.toml",
+  "~/.config/alacritty/themes/catppuccin_frappe.toml",
 ]
+live_config_reload = true
 
 [keyboard]
 bindings = [
@@ -21,7 +22,7 @@ bindings = [
 
 [env]
 TERM = "alacritty"
-# WINIT_X11_SCALE_FACTOR = "1.0"
+WINIT_X11_SCALE_FACTOR = "1.0"
 
 # WINDOW ---------------------------------------------------------
 [window]

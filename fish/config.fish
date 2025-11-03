@@ -12,4 +12,4 @@ alias ea="eza -la"
 #end
 
 starship init fish | source
-#neofetch
+neofetch
