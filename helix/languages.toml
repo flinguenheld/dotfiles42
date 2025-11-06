@@ -41,3 +41,9 @@ language-servers = [ "emmet-lsp", "vscode-html-language-server" ]
 [[language]]
 name = "kdl"
 indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "c"
+file-types = ["h", "c"]
+indent = { tab-width = 4, unit = "t" }
+language-servers = [ "clangd" ]
