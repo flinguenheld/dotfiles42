@@ -8,6 +8,10 @@
 gsettings list-schemas | xargs -n 1 gsettings reset-recursively
 
 # #######################################################################################
+# ############################################################################# SCALE ###
+gsettings set org.gnome.desktop.interface text-scaling-factor 1.4
+
+# #######################################################################################
 # ############################################################################ LAYOUT ###
 gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+altgr-intl')]"
 

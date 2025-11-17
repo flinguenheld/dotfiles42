@@ -1,4 +1,4 @@
-theme = "catppuccin_frappe"
+theme = "onelight"
 
 [editor]
 # scrolloff = 999
@@ -73,8 +73,6 @@ newline = "↵"
 tabpad = "·"  # Tabs will look like "→···" (depending on tab width)
 
 [keys.normal]
-h = "goto_next_buffer"
-H = "goto_previous_buffer"
 A-left = "goto_previous_buffer"
 A-right = "goto_next_buffer"
 G = "goto_file_end"
@@ -95,12 +93,17 @@ V = "split_selection"
 A-r = ":config-reload"
 A-a = ":pipe ~/.config/helix/scripts/pipe_words"
 A-x = ":pipe ~/.config/helix/scripts/pipe_words -p"
+tab = "move_parent_node_end"
+S-tab = "move_parent_node_start"
 
 [keys.select]
 s = "select_mode"
 v = "select_regex"
 V = "split_selection"
 G = "goto_file_end"
+
+tab = "extend_parent_node_end"
+S-tab = "extend_parent_node_start"
 
 [keys.normal.space]
 B = "buffer_picker"
