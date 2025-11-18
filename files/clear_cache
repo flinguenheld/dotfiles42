@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Folder : /home/bin/
+# florent@linguenheld.fr 2025
+
+rm -rf ~/Downloads/*
+rm -rf ~/.cache/*
+rm -rf ~/Pictures/*
+rm -rf ~/.mozilla/firefox/ed4c6q83.default/storage/default/*
+
+rm -rf ~/.var/app/org.mozilla.firefox/.mozilla
+rm -rf ~/.var/app/org.mozilla.firefox/cache
+rm -rf ~/.var/app/com.brave.Browser
+rm -rf ~/.var/app/org.gimp.GIMP
+rm -rf ~/.var/app/io.neovim.nvim
+rm -rf ~/.var/app/org.mozilla.Thunderbird
