@@ -17,3 +17,10 @@ add fish & zellij in the .zshrc
  - move to ~/bin
  - create a symlink clangd with the binary
 ```
+
+Fonts:
+[Nerd fonts](https://www.nerdfonts.com/font-downloads)  
+[Hack](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Hack.zip)  
+
+`fc-cache -fv`
+`fc-list | grep Fira`

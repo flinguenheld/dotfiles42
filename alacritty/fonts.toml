@@ -10,21 +10,24 @@ builtin_box_drawing = true
 # family = "JetBrainsMono Nerd Font"
 # family = "JetBrains Mono NF"
 # family = "Ubuntu Mono"
-family = "DejaVuSansMono"
+# family = "DejaVuSansMono"
+family = "Hack Nerd Font Mono"
+style = "Regular"
 
 ## If the family is not specified, it will fall back to the value specified for the normal font.
 [font.bold]
-family = "DejaVuSansMono"
+# family = "DejaVuSansMono"
+family = "Hack Nerd Font Mono"
 style = "Bold"
 
 # If the family is not specified, it will fall back to the value specified for the normal font.
 [font.italic]
-family = "DejaVuSansMono"
-style = "Thin Italic"
+family = "Hack Nerd Font Mono"
+style = "Italic"
 
 ## If the family is not specified, it will fall back to the value specified for the normal font.
 [font.bold_italic]
-family = "DejaVuSansMono"
+family = "Hack Nerd Font Mono"
 style = "Bold Italic"
 
 ## Offset is the extra space around each character.

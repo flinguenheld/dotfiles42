@@ -6,24 +6,24 @@ add_newline = false
 
 format = """
 $username\
-[▛ ](bg:bg_ip bg_user)\
+[ ](bg:bg_ip bg_user)\
 $localip\
-[▛ ](bg:bg_git bg_ip)\
+[ ](bg:bg_git bg_ip)\
 $git_branch\
 $git_status\
 $git_metrics\
-[▛ ](bg:bg_code bg_git)\
+[ ](bg:bg_code bg_git)\
 $rust\
 $c\
 $lua\
 $python\
-[▛ ](bg:bg_dir bg_code)\
+[ ](bg:bg_dir bg_code)\
 $directory\
-[▛ ](bg:bg_status bg_dir)\
+[ ](bg:bg_status bg_dir)\
 $cmd_duration\
 $status\
 $jobs\
-[▛ ](bg:bg_tranparent bg_status)\
+[ ](bg:bg_tranparent bg_status)\
 """
 
 [username]
@@ -49,7 +49,7 @@ truncation_symbol = "…/"
 
 [git_branch]
 style = "bg:bg_git fg_git"
-symbol = ""
+symbol = " "
 format = '[ $symbol$branch ]($style)'
 
 [git_status]
@@ -64,23 +64,27 @@ disabled = false
 
 [rust]
 style = "bg:bg_code fg_rust"
-symbol = '🦀 '
+# symbol = '🦀 '
+symbol = '󱘗 '
 format = '[ $symbol($version) ]($style)'
 
 [c]
 style = "bg:bg_code fg_c"
-symbol = "©© "
+# symbol = "©© "
+symbol = " "
 format = '[ $symbol($version(-$name)) ]($style)'
 detect_extensions = ['c', 'h', 'cpp', 'cxx', 'cc']
 
 [lua]
 style = "bg:bg_code fg_lua"
-symbol = "Lua "
+# symbol = "Lua "
+symbol = " "
 format = '[ $symbol($version) ]($style)'
 
 [python]
 style = "bg:bg_code fg_python"
-symbol = "🐍 "
+# symbol = "🐍 "
+symbol = " "
 format = '[ $symbol${pyenv_prefix}(${version}) [(\($virtualenv\) )](bg:bg_code yellow bold)]($style)'
 detect_files = [
   '.python-version',
@@ -93,7 +97,8 @@ detect_files = [
 
 [cmd_duration]
 style = "bg:bg_status fg_duration"
-format = '[⏲  $duration ]($style)'
+# format = '[⏲  $duration ]($style)'
+format = '[ 󰔛 $duration ]($style)'
 
 [status]
 disabled = false
