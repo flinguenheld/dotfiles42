@@ -16,6 +16,14 @@ gsettings set org.gnome.desktop.interface text-scaling-factor 1.4
 gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+altgr-intl')]"
 
 # #######################################################################################
+# ######################################################################## BACKGROUND ###
+if [[ $(date | awk '{print $4}' | awk -F':' '{print $3 % 2}' | bc) -eq "0" ]]; then
+  gsettings set org.gnome.desktop.background picture-uri "file:///home/flinguen/Pictures/urchin.png"
+else
+  gsettings set org.gnome.desktop.background picture-uri "file:///home/flinguen/Pictures/ferris.png"
+fi
+
+# #######################################################################################
 # ############################################################################ CUSTOM ###
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[]"
 
