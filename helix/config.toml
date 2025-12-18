@@ -1,4 +1,4 @@
-theme = "onedark"
+theme = "catppuccin_mocha"
 
 [editor]
 # scrolloff = 999
@@ -106,9 +106,9 @@ tab = "extend_parent_node_end"
 S-tab = "extend_parent_node_start"
 
 [keys.normal.space]
-B = "buffer_picker"
-b.q = ":buffer-close"
-b.Q = ":buffer-close-all"
+b = "buffer_picker"
+B.q = ":buffer-close"
+B.Q = ":buffer-close-all"
 w = "no_op"               # Only access with Ctrl+w
 
 [keys.normal.g]
