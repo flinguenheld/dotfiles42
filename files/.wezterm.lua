@@ -15,7 +15,7 @@ config.initial_rows = 50
 -- or, changing the font size and color scheme.
 config.font_size = 11
 -- config.font = wezterm.font 'Hack Nerd Font'
-config.color_scheme = 'Gruvbox Dark (Gogh)'
+config.color_scheme = 'One Dark (Gogh)'
 
 --  ---------------------------------------------------------------------------
 --  ---------------------------------------------------------------- WINDOW ---
@@ -31,22 +31,101 @@ config.window_padding = {
 --  ---------------------------------------------------------------------------
 --  -------------------------------------------------------------- KEYBINDS ---
 -- timeout_milliseconds defaults to 1000 and can be omitted
-config.leader = { key = 't', mods = 'CTRL', timeout_milliseconds = 2000 }
+config.leader = { key = 'w', mods = 'SUPER', timeout_milliseconds = 3000 }
 config.keys = {
+
   {
-    key = '|',
-    mods = 'LEADER|SHIFT',
+    key = 'Return',
+    mods = 'SHIFT|CTRL',
+    action = wezterm.action.SpawnWindow,
+  },
+  {
+    key = 'r',
+    mods = 'LEADER|CTRL',
+    action = wezterm.action.ReloadConfiguration,
+  },
+--  ----------------------------------------------
+--  ------------------------------------ PANES ---
+  {
+    key = 'v',
+    mods = 'LEADER',
     action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
   },
   {
-    key = '-',
+    key = 'h',
     mods = 'LEADER',
     action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+  },
+  {
+    key = 'r',
+    mods = 'LEADER',
+    action = wezterm.action.RotatePanes 'Clockwise',
   },
   {
     key = 'q',
     mods = 'LEADER|CTRL',
     action = wezterm.action.CloseCurrentPane { confirm = false },
+  },
+  {
+    key = 'f',
+    mods = 'LEADER',
+    action = wezterm.action.TogglePaneZoomState,
+  },
+  {
+    key = 'w',
+    mods = 'LEADER',
+    action = wezterm.action.PaneSelect { alphabet = 'asenrtiu', },
+  },
+
+  
+  {
+    key = 'LeftArrow',
+    mods = 'SUPER|SHIFT',
+    action = wezterm.action.ActivatePaneDirection 'Left',
+  },
+  {
+    key = 'RightArrow',
+    mods = 'SUPER|SHIFT',
+    action = wezterm.action.ActivatePaneDirection 'Right',
+  },
+  {
+    key = 'UpArrow',
+    mods = 'SUPER|SHIFT',
+    action = wezterm.action.ActivatePaneDirection 'Up',
+  },
+  {
+    key = 'DownArrow',
+    mods = 'SUPER|SHIFT',
+    action = wezterm.action.ActivatePaneDirection 'Down',
+  },
+--  ----------------------------------------------
+--  -------------------------------- FONT SIZE ---
+  {
+    key = '=',
+    mods = 'LEADER',
+    action = wezterm.action.ResetFontSize
+  },
+  {
+    key = '+',
+    mods = 'LEADER|SHIFT',
+    action = wezterm.action.IncreaseFontSize
+  },
+  {
+    key = '-',
+    mods = 'LEADER',
+    action = wezterm.action.DecreaseFontSize
+  },
+--  ----------------------------------------------
+--  ------------------------------------- TABS ---
+  {
+    key = 't',
+    mods = 'LEADER',
+    action = wezterm.action.SpawnTab 'CurrentPaneDomain',
+  },
+  {
+    key = 't',
+    mods = 'LEADER|CTRL',
+    action = wezterm.action.CloseCurrentTab { confirm = false },
   },
 }
 
