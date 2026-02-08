@@ -7,6 +7,7 @@ add fish & zellij in the .zshrc
 
 [helix](https://github.com/helix-editor/helix)  
 [starship](https://starship.rs/)  
+[wezterm](https://wezterm.org/install/linux.html)  
 [zellij](https://github.com/zellij-org/zellij)  
 [eza](https://github.com/eza-community/eza)  
 [neofetch](https://www.appimagehub.com/p/2291008)  

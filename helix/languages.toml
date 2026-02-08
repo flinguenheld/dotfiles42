@@ -26,7 +26,7 @@ command = "hyprls"
 name = "markdown"
 formatter = { command = "dprint", args = ["fmt", "--stdin", "md"] }
 auto-format = true
-rulers = [20]
+rulers = [80]
 text-width = 80
 
 [language-server.emmet-lsp]
@@ -47,3 +47,9 @@ name = "c"
 file-types = ["h", "c"]
 indent = { tab-width = 4, unit = "t" }
 language-servers = [ "clangd" ]
+
+[[language]]
+name = "python"
+language-servers = [ "basedpyright" ]
+rulers = [79]
+text-width = 79

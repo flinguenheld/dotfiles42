@@ -41,7 +41,7 @@ echo '------------------------- Files -------------------------'
 for FILE in ./files/{,.}*; do
 	if [ -f "$FILE" ]; then
 
-		FOLDER=$(grep "Folder : " "$FILE" | sed "s/. Folder : //" | sed "s|/home|${HOME}|")
+		FOLDER=$(grep "Folder : " "$FILE" | awk -F" : " '{print $2}' | sed "s/. Folder : //" | sed "s|/home|${HOME}|")
 
 		case "${MODE}" in
 		save)

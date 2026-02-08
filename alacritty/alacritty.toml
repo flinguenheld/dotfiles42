@@ -2,7 +2,7 @@
 import = [
   # "~/.config/hypr/alacritty/colors.toml",
   "~/.config/alacritty/fonts.toml",
-  "~/.config/alacritty/themes/catppuccin_mocha.toml",
+  "~/.config/alacritty/themes/gruvbox.toml",
 ]
 live_config_reload = true
 
@@ -13,8 +13,8 @@ bindings = [
   { key = "-", mods = "Control|Shift", action = "DecreaseFontSize" },
   { key = "=", mods = "Control", action = "ResetFontSize" },
 
-  { key = "(", mods = "Alt", action = "None" },
-  { key = ")", mods = "Alt", action = "None" },
+  { key = "(", mods = "Alt", action = "ReceiveChar" },
+  { key = ")", mods = "Alt", action = "ReceiveChar" },
 
   { key = "s", mods = "Control|Shift", action = "ToggleViMode" },
   { key = "Escape", mode = "Vi|~Search", action = "ToggleViMode" },

@@ -31,7 +31,7 @@ CUST="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybindi
 KEY_PATH="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
-"['$KEY_PATH/custom0/', '$KEY_PATH/custom1/', '$KEY_PATH/custom2/', '$KEY_PATH/custom3/', '$KEY_PATH/custom4/', '$KEY_PATH/custom5/']"
+"['$KEY_PATH/custom0/', '$KEY_PATH/custom1/', '$KEY_PATH/custom2/', '$KEY_PATH/custom3/', '$KEY_PATH/custom4/', '$KEY_PATH/custom5/', '$KEY_PATH/custom6/']"
 
 $CUST/custom0/ name "Lock"
 $CUST/custom0/ command "ft_lock"
@@ -39,7 +39,7 @@ $CUST/custom0/ binding "<Super><Control><Alt>P"
 
 $CUST/custom1/ name "Alacritty"
 $CUST/custom1/ command "/home/flinguen/bin/alacritty"
-$CUST/custom1/ binding "<Super>Return"
+$CUST/custom1/ binding "<Super>k"
 
 $CUST/custom2/ name "Next theme"
 $CUST/custom2/ command "/home/flinguen/bin/next_theme"
@@ -56,6 +56,10 @@ $CUST/custom4/ binding "<Super><Control>b"
 $CUST/custom5/ name "Firefox wordref"
 $CUST/custom5/ command "/home/flinguen/bin/firefox -new-window 'https://www.wordreference.com/enfr/hello'"
 $CUST/custom5/ binding "<Super><Control>w"
+
+$CUST/custom6/ name "Wezterm"
+$CUST/custom6/ command "/home/flinguen/bin/wezterm"
+$CUST/custom6/ binding "<Super>Return"
 
 
 gsettings set com.canonical.unity.settings-daemon.plugins.media-keys area-screenshot "[]"
