@@ -2,12 +2,11 @@
 # Folder : /home/bin/
 # florent@linguenheld.fr 2025
 
-FOLDER="${HOME}/.config/alacritty/"
-FOLDER_THEMES="${FOLDER}themes/"
-ALACRITTY_FILE="${FOLDER}alacritty.toml"
-
 ALACRITTY_FILE="$HOME/.config/alacritty/alacritty.toml"
 ALACRITTY_REG="themes/.*\.toml"
+
+WEZTERM_FILE="$HOME/.wezterm.lua"
+WEZTERM_REG="config\.color_scheme = '.*'"
 
 HELIX_FILE="$HOME/.config/helix/config.toml"
 HELIX_REG="theme = \".*\""
@@ -18,24 +17,42 @@ STARSHIP_REG="palette = \".*\""
 ZELLIJ_FILE="$HOME/.config/zellij/config.kdl"
 ZELLIJ_REG="^theme \".*\""
 
-# ---------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
+# ------------------------------------------------------------------- THEMES ---
+
+THEMES_HX=('catppuccin_frappe' 'catppuccin_latte'  'catppuccin_macchiato' 'catppuccin_mocha' 'gruvbox'             'gruvbox_light'  'onedark'         'onelight')
+THEMES_ST=('catppuccin_frappe' 'catppuccin_latte'  'catppuccin_macchiato' 'catppuccin_mocha' 'gruvbox'             'gruvbox_light'  'oneyellow'       'onelight')
+THEMES_WZ=('Catppuccin Frappe' 'Catppuccin Latte'  'Catppuccin Macchiato' 'Catppuccin Mocha' 'Gruvbox Dark (Gogh)' 'Gruvbox (Gogh)' 'One Dark (Gogh)' 'One Light (Gogh)')
+
+# ------------------------------------------------------------------------------
+# Get the index of the given theme in $THEMES_HX
+# (0 if not found)
+get_index() {
+  
+  for index in "${!THEMES_HX[@]}"; do
+    if [[ "${THEMES_HX[$index]}" == "$1" ]]; then
+      echo "$index"
+      exit
+    fi
+  done
+  echo "0"
+}
+
+# ------------------------------------------------------------------------------
 usage() {
   echo "Usage: $(basename "${0}") [OPTION]"
-  echo "  Get the available themes in the folder: '${FOLDER}'"
-  echo "  Then get the current active theme in the file: '${ALACRITTY_FILE}'"
-  echo "  And update the Helix, Alacritty and starship config files with the next theme."
+  echo "  Get the current helix theme"
+  echo "  Then get the next theme in the saved list"
+  echo "  And update the Helix, Wezterm, Alacritty and Starship config files with the next theme."
+  echo "  Set the gnome color scheme to light or dark according to the new theme"
   echo
-  echo "     -p PREVIOUS:    to set the previous theme."
   echo "     -h HELP:        display this message."
 }
 
 MODE="next"
-while getopts phm OPTION; do
+while getopts hm OPTION; do
 
   case ${OPTION} in
-    p)
-      MODE="previous"
-    ;;
     h)
       usage
       exit 0
@@ -48,43 +65,34 @@ while getopts phm OPTION; do
 done
 
 # ---------------------------------------------------------------------------------------
-THEMES=$(find "${FOLDER_THEMES}" -name "*.toml" -printf "%f\n")
-CURRENT=$(grep "themes" "${ALACRITTY_FILE}"  | awk -F '[/|"]' '{print $6}')
+CURRENT=$(grep "$HELIX_REG" "$HELIX_FILE" | awk -F '"' '{print $2}')
 
-if [[ "$MODE" == "previous" ]]; then
-  THEMES=$(echo -e "${THEMES}" | sort --reverse)
+INDEX=$(get_index "$CURRENT")
+((INDEX++))
+if [[ "$INDEX" -eq "${#THEMES_HX[@]}" ]]; then
+  INDEX="0"
+fi
+
+echo "new one  ${THEMES_HX[$INDEX]}"
+
+sed -i "s#${HELIX_REG}#theme = \"${THEMES_HX[$INDEX]}\"#" "${HELIX_FILE}"
+sed -i "s#${ALACRITTY_REG}#themes/${THEMES_HX[$INDEX]}.toml#" "${ALACRITTY_FILE}"
+sed -i "s#${WEZTERM_REG}#config.color_scheme = '${THEMES_WZ[$INDEX]}'#" "${WEZTERM_FILE}"
+sed -i "s#${STARSHIP_REG}#palette = \"${THEMES_ST[$INDEX]}\"#" "${STARSHIP_FILE}"
+sed -i "s#${ZELLIJ_REG}#theme \"${THEMES_HX[$INDEX]}\"#" "${ZELLIJ_FILE}"
+
+# Due to the appimage, the signal has to be sent to the PID of each running helix
+pgrep -f usr/bin/hx | while read -r PID; do
+  kill -USR1 "$PID" 2> /dev/null
+done
+
+# Up gnome style
+if [[ "$NEW" =~ "light" || "$NEW" =~ "latte" ]]; then
+  gsettings set org.gnome.desktop.interface color-scheme "'prefer-light'"
 else
-  THEMES=$(echo -e "${THEMES}" | sort)
+  gsettings set org.gnome.desktop.interface color-scheme "'prefer-dark'"
 fi
 
-NEW=$(echo -e "${THEMES}" | paste -s | awk -F "${CURRENT}" '{print $2}' | awk '{print $1}')
-if [[ -z $NEW ]]; then
-  NEW=$(echo -e "${THEMES}" | head -1)
-fi
-
-NEW=$(echo -e "${NEW}" | sed 's/.toml//g')
-
-if [[ -n "$NEW" ]]; then
-  sed -i "s#${HELIX_REG}#theme = \"${NEW}\"#" "${HELIX_FILE}"
-  sed -i "s#${ALACRITTY_REG}#themes/${NEW}.toml#" "${ALACRITTY_FILE}"
-  sed -i "s#${STARSHIP_REG}#palette = \"${NEW}\"#" "${STARSHIP_FILE}"
-  sed -i "s#${ZELLIJ_REG}#theme \"${NEW}\"#" "${ZELLIJ_FILE}"
-
-  # Due to the appimage, the signal has to be sent to the PID of each running helix
-  pgrep -f usr/bin/hx | while read -r PID; do
-    kill -USR1 "$PID" 2> /dev/null
-  done
-
-  # Up gnome style
-  if [[ "$NEW" =~ "light" || "$NEW" =~ "latte" ]]; then
-    gsettings set org.gnome.desktop.interface color-scheme "'prefer-light'"
-  else
-    gsettings set org.gnome.desktop.interface color-scheme "'prefer-dark'"
-  fi
-
-  notify-send "✨ New theme: ${NEW} ✨ "
-  echo "New theme: $NEW"
-  exit 0
-fi
-
-exit 1
+notify-send "✨ New theme: ${THEMES_WZ[$INDEX]} ✨ "
+echo "New theme: ${THEMES_WZ[$INDEX]}"
+exit 0
