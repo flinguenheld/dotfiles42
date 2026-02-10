@@ -31,7 +31,7 @@ CUST="gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybindi
 KEY_PATH="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
-"['$KEY_PATH/custom0/', '$KEY_PATH/custom1/', '$KEY_PATH/custom2/', '$KEY_PATH/custom3/', '$KEY_PATH/custom4/', '$KEY_PATH/custom5/', '$KEY_PATH/custom6/']"
+"['$KEY_PATH/custom0/', '$KEY_PATH/custom1/', '$KEY_PATH/custom2/', '$KEY_PATH/custom3/', '$KEY_PATH/custom4/', '$KEY_PATH/custom5/', '$KEY_PATH/custom6/', '$KEY_PATH/custom7/', '$KEY_PATH/custom8/']"
 
 $CUST/custom0/ name "Lock"
 $CUST/custom0/ command "ft_lock"
@@ -60,6 +60,14 @@ $CUST/custom5/ binding "<Super><Control>w"
 $CUST/custom6/ name "Wezterm"
 $CUST/custom6/ command "/home/flinguen/bin/wezterm"
 $CUST/custom6/ binding "<Super>Return"
+
+$CUST/custom7/ name "Wezterm_size_plus"
+$CUST/custom7/ command "/home/flinguen/bin/wezterm_font_size +"
+$CUST/custom7/ binding "<Alt><Super>f"
+
+$CUST/custom8/ name "Wezterm_size_minus"
+$CUST/custom8/ command "/home/flinguen/bin/wezterm_font_size -"
+$CUST/custom8/ binding "<Alt><Super><Shift>f"
 
 
 gsettings set com.canonical.unity.settings-daemon.plugins.media-keys area-screenshot "[]"

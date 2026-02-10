@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# Folder : /home/bin/
+# Florent Linguenheld 2026
+
+WEZTERM_FILE="$HOME/.wezterm.lua"
+LINE="config\.font_size"
+
+# ------------------------------------------------------------------------------
+usage() {
+  echo "Usage: $(basename "${0}") + | - | ="
+  echo "  Get the current font size in $WEZTERM_FILE."
+  echo "  Add/sub one and update the file"
+  echo "  Thanks to the wezterm auto reload, it will up all windows"
+}
+
+CURRENT=$(grep "$LINE" "$WEZTERM_FILE" | awk -F" = " '{print $2}')
+
+if [[ -z "$CURRENT" ]]; then
+  notify-send "❌ WEZTERM FONT SIZE - CURRENT NOT FOUND ❌"
+  exit 1
+fi
+
+case "$1" in
+  "+")
+    ((CURRENT++)) ;;
+  "-")
+    ((CURRENT--)) ;;
+  "=")
+    CURRENT=11 ;;
+  ?)
+    usage
+    exit 1 ;;
+esac
+
+sed -i "s/$LINE .*/config\.font_size = $CURRENT/"  "$HOME"/.wezterm.lua
+notify-send "✨ Wezterm font size new size: $CURRENT ✨"
+exit 0
