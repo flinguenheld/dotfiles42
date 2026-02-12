@@ -4,6 +4,11 @@ left,right,left
 on,off,on
 height,width,height
 row,col,row
+min,max,min
+minimum,maximum,minimum
+previous,next,previous
+pop_front,pop_back,pop_front
+push_front,push_back,push_front
 -,+,-
 north,east,south,west,north
 zero,one,two,three,four,five,six,seven,eight,ten
