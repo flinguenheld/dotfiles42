@@ -20,17 +20,17 @@ ZELLIJ_REG="^theme \".*\""
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------- THEMES ---
 
-THEMES_HX=('catppuccin_frappe' 'catppuccin_latte'  'catppuccin_macchiato' 'catppuccin_mocha' 'gruvbox'             'gruvbox_light'  'onedark'         'onelight')
+THEMES=(   'catppuccin_frappe' 'catppuccin_latte'  'catppuccin_macchiato' 'catppuccin_mocha' 'gruvbox'             'gruvbox_light'  'onedark'         'onelight')
 THEMES_ST=('catppuccin_frappe' 'catppuccin_latte'  'catppuccin_macchiato' 'catppuccin_mocha' 'gruvbox'             'gruvbox_light'  'oneyellow'       'onelight')
 THEMES_WZ=('Catppuccin Frappe' 'Catppuccin Latte'  'Catppuccin Macchiato' 'Catppuccin Mocha' 'Gruvbox Dark (Gogh)' 'Gruvbox (Gogh)' 'One Dark (Gogh)' 'One Light (Gogh)')
 
 # ------------------------------------------------------------------------------
-# Get the index of the given theme in $THEMES_HX
+# Get the index of the given theme in $THEMES
 # (0 if not found)
 get_index() {
   
-  for index in "${!THEMES_HX[@]}"; do
-    if [[ "${THEMES_HX[$index]}" == "$1" ]]; then
+  for index in "${!THEMES[@]}"; do
+    if [[ "${THEMES[$index]}" == "$1" ]]; then
       echo "$index"
       exit
     fi
@@ -69,17 +69,17 @@ CURRENT=$(grep "$HELIX_REG" "$HELIX_FILE" | awk -F '"' '{print $2}')
 
 INDEX=$(get_index "$CURRENT")
 ((INDEX++))
-if [[ "$INDEX" -eq "${#THEMES_HX[@]}" ]]; then
+if [[ "$INDEX" -eq "${#THEMES[@]}" ]]; then
   INDEX="0"
 fi
 
-echo "new one  ${THEMES_HX[$INDEX]}"
+echo "new one  ${THEMES[$INDEX]}"
 
-sed -i "s#${HELIX_REG}#theme = \"${THEMES_HX[$INDEX]}\"#" "${HELIX_FILE}"
-sed -i "s#${ALACRITTY_REG}#themes/${THEMES_HX[$INDEX]}.toml#" "${ALACRITTY_FILE}"
+sed -i "s#${HELIX_REG}#theme = \"${THEMES[$INDEX]}\"#" "${HELIX_FILE}"
+sed -i "s#${ALACRITTY_REG}#themes/${THEMES[$INDEX]}.toml#" "${ALACRITTY_FILE}"
 sed -i "s#${WEZTERM_REG}#config.color_scheme = '${THEMES_WZ[$INDEX]}'#" "${WEZTERM_FILE}"
 sed -i "s#${STARSHIP_REG}#palette = \"${THEMES_ST[$INDEX]}\"#" "${STARSHIP_FILE}"
-sed -i "s#${ZELLIJ_REG}#theme \"${THEMES_HX[$INDEX]}\"#" "${ZELLIJ_FILE}"
+sed -i "s#${ZELLIJ_REG}#theme \"${THEMES[$INDEX]}\"#" "${ZELLIJ_FILE}"
 
 # Due to the appimage, the signal has to be sent to the PID of each running helix
 pgrep -f usr/bin/hx | while read -r PID; do
@@ -87,7 +87,7 @@ pgrep -f usr/bin/hx | while read -r PID; do
 done
 
 # Up gnome style
-if [[ "$NEW" =~ "light" || "$NEW" =~ "latte" ]]; then
+if [[ "${THEMES[$INDEX]}" =~ "light" || "${THEMES[$INDEX]}" =~ "latte" ]]; then
   gsettings set org.gnome.desktop.interface color-scheme "'prefer-light'"
 else
   gsettings set org.gnome.desktop.interface color-scheme "'prefer-dark'"
