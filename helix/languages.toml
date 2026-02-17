@@ -50,12 +50,7 @@ language-servers = [ "clangd" ]
 
 [[language]]
 name = "python"
-language-servers = [ "pylsp" ]
-rulers = [79]
-text-width = 79
+language-servers = [ "pyright", "ruff" ]
 auto-format = true
-
-[language-server.pylsp.config.pylsp.plugins]
-ruff.enabled = true
-flake8.enabled = true
-autopep8.enabled = false
+text-width = 79
+rulers = [79]

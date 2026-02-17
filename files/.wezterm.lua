@@ -13,9 +13,9 @@ config.initial_cols = 100
 config.initial_rows = 50
 
 -- or, changing the font size and color scheme.
-config.font_size = 11
+config.font_size = 10
 -- config.font = wezterm.font 'Hack Nerd Font'
-config.color_scheme = 'Gruvbox Dark (Gogh)'
+config.color_scheme = 'One Dark (Gogh)'
 
 --  ---------------------------------------------------------------------------
 --  ---------------------------------------------------------------- WINDOW ---
