@@ -1,9 +1,10 @@
 # dotfiles42
 
-alacritty get the `alacritty-v0.16.1-anylinux-x86_64.dwfs.AppBundle`  
-starship get the `starship-x86_64-unknown-linux-gnu`  
+Install a rustup to get the last cargo version.  
+Remove the doc folder to save some space (~700mo).  
+`rustup component add rust-docs` to get them back.  
 
-add fish & zellij in the .zshrc  
+Add fish in the .zshrc  
 
 [helix](https://github.com/helix-editor/helix)  
 [starship](https://starship.rs/)  
@@ -22,6 +23,7 @@ add fish & zellij in the .zshrc
 Fonts:
 [Nerd fonts](https://www.nerdfonts.com/font-downloads)  
 [Hack](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Hack.zip)  
+Add it in ~/.fonts/  
 
 `fc-cache -fv`
-`fc-list | grep Fira`
+`fc-list | grep Hack`
