@@ -46,11 +46,13 @@ $CUST/custom2/ command "/home/flinguen/bin/next_theme"
 $CUST/custom2/ binding "<Super><Control>t"
 
 $CUST/custom3/ name "Firefox"
-$CUST/custom3/ command "/home/flinguen/bin/firefox"
+# $CUST/custom3/ command "/home/flinguen/bin/firefox"
+$CUST/custom3/ command "firefox"
 $CUST/custom3/ binding "<Super>b"
 
 $CUST/custom4/ name "Firefox private"
-$CUST/custom4/ command "/home/flinguen/bin/firefox --private-window"
+# $CUST/custom4/ command "/home/flinguen/bin/firefox --private-window"
+$CUST/custom4/ command "firefox --private-window"
 $CUST/custom4/ binding "<Super><Control>b"
 
 $CUST/custom5/ name "Firefox wordref"

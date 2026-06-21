@@ -1,0 +1,30 @@
+# Folder : /home/bin/
+
+echo "##############################################"
+echo "##############################################"
+echo "Don't forget to up the fish environment !!!"
+
+# # HASKELL ##############
+# set -gx GOINFRE_DIR ~/goinfre
+
+# set -x PATH $PATH $GOINFRE_DIR/.ghcup/bin
+
+# set -gx GHCUP_INSTALL_BASE_PREFIX $GOINFRE_DIR
+# set -gx BOOTSTRAP_HASKELL_NONINTERACTIVE 1
+
+# set -gx CABAL_DIR $GOINFRE_DIR/.cabal
+# set -gx CABAL_CONFIG $CABAL_DIR/config
+# set -gx CABAL_STORE_DIR $CABAL_DIR/store
+# set -gx CABAL_LOG_DIR $CABAL_DIR/logs
+# # ######################
+
+
+curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+
+echo "##############################################"
+echo "##############################################"
+
+ghcup install ghc
+ghcup install hls
+ghcup install stack
+

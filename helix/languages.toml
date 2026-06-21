@@ -50,7 +50,12 @@ language-servers = [ "clangd" ]
 
 [[language]]
 name = "python"
-language-servers = [ "pyright", "ruff" ]
+# language-servers = [ "pyright", "ruff" ]
+language-servers = [ "ty", "ruff" ]
 auto-format = true
 text-width = 79
 rulers = [79]
+
+[[language]]
+name = "haskell"
+language-servers = [ "haskell-language-server-wrapper" ]
